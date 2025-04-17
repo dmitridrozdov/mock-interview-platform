@@ -2,6 +2,8 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from "next/image"
 import React from 'react'
+import { dummyInterviews } from '@/constants'
+import InterviewCard from '@/components/InterviewCard'
 
 const page = () => {
   return (
@@ -32,6 +34,10 @@ const page = () => {
         <h2>Your Interviews</h2>
 
         <div className="interviews-section">
+          {dummyInterviews.map((interview) => (
+            <InterviewCard {...interview} />
+          ))}
+          
           {/* {hasPastInterviews ? (
             userInterviews?.map((interview) => (
               <InterviewCard

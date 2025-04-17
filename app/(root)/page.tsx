@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import Image from "next/image"
 import React from 'react'
 
 const page = () => {
@@ -17,6 +18,13 @@ const page = () => {
           <Button asChild className="btn-primary max-sm:w-full">
             <Link href="/interview">Start an Interview</Link>
           </Button>
+          <Image
+            src="/robot.png"
+            alt="robo-dude"
+            width={400}
+            height={400}
+            className="max-sm:hidden"
+          />
         </div>
       </section>
     </>

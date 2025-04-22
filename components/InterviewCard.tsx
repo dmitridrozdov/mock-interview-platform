@@ -37,6 +37,27 @@ const InterviewCard = ({ interviewId, userId, role, type, techstack, createdAt }
                     className="rounded-full object-fit size-[90px]"
                 />
 
+                {/* Interview Role */}
+                <h3 className="mt-5 capitalize">{role} Interview</h3>
+
+                {/* Date & Score */}
+                <div className="flex flex-row gap-5 mt-3">
+                    <div className="flex flex-row gap-2">
+                    <Image
+                        src="/calendar.svg"
+                        width={22}
+                        height={22}
+                        alt="calendar"
+                    />
+                    <p>{formattedDate}</p>
+                    </div>
+
+                    <div className="flex flex-row gap-2 items-center">
+                    <Image src="/star.svg" width={22} height={22} alt="star" />
+                    <p>{feedback?.totalScore || "---"}/100</p>
+                    </div>
+          </div>
+
             </div>
         </div>
     </div>

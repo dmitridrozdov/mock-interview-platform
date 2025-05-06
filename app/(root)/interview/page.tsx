@@ -1,4 +1,4 @@
-// import Agent from "@/components/Agent";
+import Agent from "@/components/Agent"
 import { getCurrentUser } from "@/lib/actions/auth.action";
 
 const Page = async () => {
@@ -7,6 +7,8 @@ const Page = async () => {
   return (
     <>
       <h3>Interview generation</h3>
+
+      <Agent />
 
       {/* <Agent
         userName={user?.name!}

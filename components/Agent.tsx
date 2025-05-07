@@ -2,6 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 
 const Agent = () => {
+
+    const isSpeaking = true;
+
   return (
     <div className="call-view">
         <div className="card-interviewer">
@@ -13,7 +16,9 @@ const Agent = () => {
                     height={54}
                     className="object-cover"
                 />
+                {isSpeaking && <span className="animate-speak" />}
             </div>
+            <h3>AI Interviewer</h3>
         </div>
     </div>
   )

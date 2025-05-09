@@ -9,12 +9,24 @@ enum CallStatus {
     CONNECTING = "CONNECTING",
     ACTIVE = "ACTIVE",
     FINISHED = "FINISHED",
+}
+
+interface SavedMessage {
+    role: "user" | "system" | "assistant";
+    content: string;
   }
 
 const Agent = ({ userName }: AgentProps) => {
 
   const isSpeaking = true;
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
+//   const [messages, setMessages] = useState<SavedMessage[]>([]);
+  const messages = [
+    'What is your name?',
+    'My name is John Doe.'
+  ]
+//   const [lastMessage, setLastMessage] = useState<string>("");
+  const lastMessage = messages[messages.length - 1];
 
   return (
     <>
@@ -48,30 +60,46 @@ const Agent = ({ userName }: AgentProps) => {
             </div>
         </div>
 
-        <div className="w-full flex justify-center">
-        {callStatus !== "ACTIVE" ? (
-        //   <button className="relative btn-call" onClick={() => handleCall()}>
-          <button className="relative btn-call">
-            <span
-              className={cn(
-                "absolute animate-ping rounded-full opacity-75",
-                callStatus !== "CONNECTING" && "hidden"
-              )}
-            />
-
-            <span className="relative">
-              {callStatus === "INACTIVE" || callStatus === "FINISHED"
-                ? "Call"
-                : ". . ."}
-            </span>
-          </button>
-        ) : (
-        //   <button className="btn-disconnect" onClick={() => handleDisconnect()}>
-          <button className="btn-disconnect">
-            End
-          </button>
+        {messages.length > 0 && (
+            <div className="transcript-border">
+                <div className="transcript">
+                    <p
+                    key={lastMessage}
+                    className={cn(
+                        "transition-opacity duration-500 opacity-0",
+                        "animate-fadeIn opacity-100"
+                    )}
+                    >
+                    {lastMessage}
+                    </p>
+                </div>
+            </div>
         )}
-      </div>
+
+        <div className="w-full flex justify-center">
+            {callStatus !== "ACTIVE" ? (
+            //   <button className="relative btn-call" onClick={() => handleCall()}>
+            <button className="relative btn-call">
+                <span
+                className={cn(
+                    "absolute animate-ping rounded-full opacity-75",
+                    callStatus !== "CONNECTING" && "hidden"
+                )}
+                />
+
+                <span className="relative">
+                {callStatus === "INACTIVE" || callStatus === "FINISHED"
+                    ? "Call"
+                    : ". . ."}
+                </span>
+            </button>
+            ) : (
+            //   <button className="btn-disconnect" onClick={() => handleDisconnect()}>
+            <button className="btn-disconnect">
+                End
+            </button>
+            )}
+        </div>
     </>
   )
 }

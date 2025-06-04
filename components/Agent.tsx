@@ -24,8 +24,8 @@ const Agent = ({
 }: AgentProps) => {
 
   const router = useRouter();
-  const isSpeaking = true;
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 //   const [messages, setMessages] = useState<SavedMessage[]>([]);
   const messages = [
     'What is your name?',

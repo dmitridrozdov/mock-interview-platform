@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { cn } from "@/lib/utils"
+import { useRouter } from 'next/router';
 
 enum CallStatus {
     INACTIVE = "INACTIVE",
@@ -22,6 +23,7 @@ const Agent = ({
     type
 }: AgentProps) => {
 
+  const router = useRouter();
   const isSpeaking = true;
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
 //   const [messages, setMessages] = useState<SavedMessage[]>([]);

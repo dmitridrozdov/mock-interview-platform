@@ -26,13 +26,8 @@ const Agent = ({
   const router = useRouter();
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
   const [isSpeaking, setIsSpeaking] = useState(false);
-//   const [messages, setMessages] = useState<SavedMessage[]>([]);
-  const messages = [
-    'What is your name?',
-    'My name is John Doe.'
-  ]
-//   const [lastMessage, setLastMessage] = useState<string>("");
-  const lastMessage = messages[messages.length - 1];
+  const [messages, setMessages] = useState<SavedMessage[]>([]);
+  const [lastMessage, setLastMessage] = useState<string>("");
 
   return (
     <>

@@ -116,6 +116,23 @@ const Agent = ({
     if (callStatus === CallStatus.FINISHED) router.push("/");
   }, [messages, callStatus, type, userId]);
 
+  const handleCall = async () => {
+    setCallStatus(CallStatus.CONNECTING);
+     await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
+         variableValues: {
+             username: userName,
+             userid: userId,
+         },
+         clientMessages: [],
+         serverMessages: []
+     });
+  }
+
+  const handleDisconnect = async () => {
+    setCallStatus(CallStatus.FINISHED);
+    await vapi.stop();
+  };
+
   return (
     <>
         <div className="call-view">

@@ -112,11 +112,9 @@ const Agent = ({
 //     }
 //   }, [messages, callStatus, feedbackId, interviewId, router, type, userId]);
 
-  useEffect(() => {
-    if (messages.length > 0) {
-      setLastMessage(messages[messages.length - 1].content);
-    }
-  }, [messages]);
+  useEffect(() => { //DD: replace with the above useEffect
+    if (callStatus === CallStatus.FINISHED) router.push("/");
+  }, [messages, callStatus, type, userId]);
 
   return (
     <>

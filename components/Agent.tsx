@@ -31,7 +31,7 @@ const Agent = ({
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [messages, setMessages] = useState<SavedMessage[]>([]);
-  const [lastMessage, setLastMessage] = useState<string>("");
+//   const [lastMessage, setLastMessage] = useState<string>("");
 
   useEffect(() => {
     const onCallStart = () => {
@@ -133,6 +133,8 @@ const Agent = ({
     await vapi.stop();
   };
 
+  const lastMessage = messages[messages.length - 1]?.content
+
   return (
     <>
         <div className="call-view">
@@ -183,8 +185,7 @@ const Agent = ({
 
         <div className="w-full flex justify-center">
             {callStatus !== "ACTIVE" ? (
-            //   <button className="relative btn-call" onClick={() => handleCall()}>
-            <button className="relative btn-call">
+              <button className="relative btn-call" onClick={() => handleCall()}>
                 <span
                 className={cn(
                     "absolute animate-ping rounded-full opacity-75",
@@ -199,8 +200,7 @@ const Agent = ({
                 </span>
             </button>
             ) : (
-            //   <button className="btn-disconnect" onClick={() => handleDisconnect()}>
-            <button className="btn-disconnect">
+            <button className="btn-disconnect" onClick={() => handleDisconnect()}>
                 End
             </button>
             )}
